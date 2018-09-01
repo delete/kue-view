@@ -1,8 +1,7 @@
 <template>
   <div class="max-w-md w-full lg:flex">
     <div 
-        @click="openDetails"
-        @click.ctrl="handleCtrlClick(jobId)"
+        @click.stop="handleClick(jobId)"
         class="jobCard hover:shadow w-full border border-grey-light bg-white rounded-b p-4 flex flex-col justify-between leading-normal">
       <div class="mb-3">
         <div class="text-grey-dark text-xl mb-2 flex">
@@ -10,7 +9,7 @@
           <span title="Job type">{{ jobType }}</span>
         </div>
       </div>
-      <details id="details" class="mb-3">
+      <details class="mb-3">
         <summary class="text-grey">
           Details
         </summary>
@@ -52,21 +51,8 @@ import { Component, Vue, Emit } from 'vue-property-decorator';
   },
 })
 export default class JobCard extends Vue {
-  @Emit('clickCtrl')
-  private handleCtrlClick(jobId: number) {/*  */}
-
-  private openDetails(e: Event) {
-    e.preventDefault();
-    const detailsEl = this.$el.querySelector('#details');
-
-    if (detailsEl) {
-      if (detailsEl.hasAttribute('open')) {
-        detailsEl.removeAttribute('open');
-      } else {
-        detailsEl.setAttribute('open', 'true');
-      }
-    }
-  }
+  @Emit('click')
+  private handleClick(jobId: number) {/*  */}
 }
 </script>
 

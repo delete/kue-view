@@ -28,7 +28,7 @@
         :data="job.data"
         class="mb-4 cursor-pointer select-none"
         :class="isJobSelected(job.id) ? 'shadow-md' : ''"
-        @clickCtrl="selectJob(index)"
+        @click="selectJob(index)"
       />
     </div>
   </section>
