@@ -28,4 +28,21 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
+/* Style Scroll bar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-button {
+  background-color: rgb(210, 210, 210);
+}
+
+::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(210, 210, 210);
+}
 </style>
