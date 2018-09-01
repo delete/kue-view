@@ -29,10 +29,10 @@ import { Component, Vue, Emit } from 'vue-property-decorator';
     jobType: String,
     createdAt: String,
     attempts: Object,
-  }
+  },
 })
 export default class JobCard extends Vue {
   @Emit('clickCtrl')
-  handleClick(jobId: number) {}
+  private handleClick(jobId: number) {/*  */}
 }
 </script>

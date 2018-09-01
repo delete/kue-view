@@ -48,7 +48,7 @@ import Menu from '../components/Menu.vue';
 @Component({
   components: {
     JobCard,
-    Menu
+    Menu,
   },
 })
 export default class Home extends Vue {
@@ -58,30 +58,30 @@ export default class Home extends Vue {
   public selectJob(jobIndex: number) {
     const selectedJob = this.jobs[jobIndex];
     const exists = this.isJobSelected(selectedJob.id);
-    
+
     if (!exists) {
       this.selectedJobs = [...this.selectedJobs, selectedJob];
     } else {
-      this.selectedJobs = this.selectedJobs.filter(j => j.id !== selectedJob.id);
+      this.selectedJobs = this.selectedJobs.filter((j) => j.id !== selectedJob.id);
     }
   }
 
   public isJobSelected(jobId: number) {
-    return this.selectedJobs.find( j => j.id === jobId);
+    return this.selectedJobs.find((j) => j.id === jobId);
   }
 
-  public toggleSelectAll () {
+  public toggleSelectAll() {
     this.selectAll = !this.selectAll;
   }
 
-  get selectAllText () {
+  get selectAllText() {
     return this.selectAll ? 'Unselect all' : 'Select all';
   }
 
-  get selectAll () {
-    return this.jobs ? this.selectedJobs.length === this.jobs.length : false
+  get selectAll() {
+    return this.jobs ? this.selectedJobs.length === this.jobs.length : false;
   }
-  set selectAll (value: any) {
+  set selectAll(value: any) {
     this.selectedJobs = value ? [...this.jobs] : [];
   }
 

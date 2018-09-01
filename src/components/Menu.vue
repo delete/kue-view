@@ -22,17 +22,17 @@ import { Component, Vue, Emit } from 'vue-property-decorator';
   components: {},
   props: {
     showMenu: Boolean,
-  }
+  },
 })
 export default class Menu extends Vue {
   @Emit('selected')
-  handleSelectClick() {}
+  private handleSelectClick() {/*  */}
 
   @Emit('delete')
-  handleDeleteClick() {}
+  private handleDeleteClick() {/*  */}
 
   @Emit('restart')
-  handleRestartClick() {}
+  private handleRestartClick() {/*  */}
 }
 </script>
 
