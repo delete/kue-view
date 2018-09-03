@@ -9,7 +9,7 @@
           <span title="Job type">{{ jobType }}</span>
         </div>
       </div>
-      <details class="mb-3">
+      <details class="mb-3" @click.stop>
         <summary class="text-grey">
           Details
         </summary>
