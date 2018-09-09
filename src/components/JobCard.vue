@@ -13,14 +13,13 @@
         <summary class="text-grey">
           Details
         </summary>
-        <div class="mb-6 mt-3 text-grey">
+        <div class="mb-6 mt-3 pl-4 text-grey border-l border-grey-light">
           <p>Created at: {{ createdAt }}</p>
           <p>Started at: {{ startedAt }}</p>
           <p>Updated at: {{ updatedAt }}</p>
           <p>Duration: {{ duration }}</p>
           <p>Priority: {{ priority }}</p>
           <p>WorkerId: {{ workerId }}</p>
-
         </div>
       </details>
       <div>

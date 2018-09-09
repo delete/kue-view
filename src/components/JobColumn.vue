@@ -4,11 +4,17 @@
       <TheButton @click="toggleSelectAll" :primary="true">
         {{ selectAllText }}
       </TheButton>
-      <TheButton @click="handleRestartClick(selectedJobs)" title="Delete selected job(s)" class="hover:text-blue hover:border-blue">
-        Restart
+      <TheButton
+        @click="handleRestartClick(selectedJobs)"
+        title="Delete selected job(s)"
+        class="hover:text-blue hover:border-blue">
+          Restart
       </TheButton>
-      <TheButton @click="handleDeleteClick(selectedJobs)" title="Restart selected job(s)" class="hover:text-red hover:border-red">
-        Delete
+      <TheButton
+        @click="handleDeleteClick(selectedJobs)"
+        title="Restart selected job(s)"
+        class="hover:text-red hover:border-red">
+          Delete
       </TheButton>
     </Menu>
     

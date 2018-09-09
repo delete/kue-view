@@ -1,10 +1,30 @@
 <template>
   <div class="home">
     <div class="board flex">
-      <JobColumn class="board__column" title="queued" :jobs="queuedJobs" @restart="restartJobs" @delete="deleteJobs"/>
-      <JobColumn class="board__column" title="active" :jobs="activedJobs" @restart="restartJobs" @delete="deleteJobs"/>
-      <JobColumn class="board__column" title="complete" :jobs="completedJobs" @restart="restartJobs" @delete="deleteJobs"/>
-      <JobColumn class="board__column" title="failed" :jobs="completedJobs" @restart="restartJobs" @delete="deleteJobs"/>
+      <JobColumn
+        class="board__column"
+        title="queued"
+        :jobs="queuedJobs"
+        @restart="restartJobs"
+        @delete="deleteJobs"/>
+      <JobColumn
+        class="board__column"
+        title="active"
+        :jobs="activedJobs"
+        @restart="restartJobs"
+        @delete="deleteJobs"/>
+      <JobColumn
+        class="board__column"
+        title="complete"
+        :jobs="completedJobs"
+        @restart="restartJobs"
+        @delete="deleteJobs"/>
+      <JobColumn
+        class="board__column"
+        title="failed"
+        :jobs="completedJobs"
+        @restart="restartJobs"
+        @delete="deleteJobs"/>
     </div>
   </div>
 </template>
@@ -18,7 +38,6 @@ import {
 } from 'vuex-class';
 
 import JobColumn from '../components/JobColumn.vue';
-import { clearInterval } from 'timers';
 
 @Component({
   components: {
