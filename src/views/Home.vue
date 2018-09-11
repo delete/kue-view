@@ -22,7 +22,7 @@
       <JobColumn
         class="board__column"
         title="failed"
-        :jobs="completedJobs"
+        :jobs="failedJobs"
         @restart="restartJobs"
         @delete="deleteJobs"/>
     </div>
@@ -61,16 +61,22 @@ export default class Home extends Vue {
   @Action('FETCH_JOBS')
   private fetchJobs!: () => {};
 
-  public async created() {
-    await this.fetchJobs();
+  @Action('RESTART_JOB')
+  private restartJob!: ({ id, state }: any) => {};
+
+  @Action('DELETE_JOB')
+  private deleteJob!: ({ id }: any) => {};
+
+  public created() {
+    setInterval(() => this.fetchJobs(), 1000);
   }
 
   public restartJobs(jobs: any[]) {
-    console.log(jobs);
+    jobs.forEach((j) => this.restartJob({ id: j.id, state: 'inactive' }));
   }
 
   public deleteJobs(jobs: any[]) {
-    console.log(jobs);
+    jobs.forEach((j) => this.deleteJob({ id: j.id }));
   }
 }
 </script>

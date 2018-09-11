@@ -5,11 +5,7 @@ export class KueApi {
 
   constructor() {
     this.request = axios.create({
-      baseURL: 'https://192.168.1.170:3050/',
-      headers: {
-        Host: '192.168.1.170:3050',
-        Referer: 'http://192.168.1.170:3050/',
-      },
+      baseURL: 'http://localhost:3051/kue-api/',
     });
   }
 

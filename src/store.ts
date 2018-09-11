@@ -1,9 +1,10 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-// @ts-ignore
-import jobs from '../jobs.json';
+import { KueApi } from './KueApi';
 
 Vue.use(Vuex);
+
+const kueApiService = new KueApi();
 
 export default new Vuex.Store({
   state: {
@@ -16,8 +17,14 @@ export default new Vuex.Store({
   },
   actions: {
     async FETCH_JOBS({ commit }) {
-      const js = await Promise.resolve(jobs);
-      commit('SET_JOBS', js);
+      const { data } = await kueApiService.getAll(0, 50000, 'asc');
+      commit('SET_JOBS', data);
+    },
+    RESTART_JOB({}, { id, state }) {
+      return kueApiService.restartJob(id, state);
+    },
+    DELETE_JOB({}, { id }) {
+      return kueApiService.deleteJob(id);
     },
   },
   getters: {
@@ -34,7 +41,7 @@ export default new Vuex.Store({
     },
 
     GET_QUEUED(state) {
-      return state.jobs.filter((j: any) => j.state === 'queued');
+      return state.jobs.filter((j: any) => j.state === 'inactive');
     },
   },
 });
