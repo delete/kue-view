@@ -5,7 +5,7 @@ export class KueApi {
 
   constructor() {
     this.request = axios.create({
-      baseURL: 'http://localhost:3051/kue-api/',
+      baseURL: '/kue-api/',
     });
   }
 

@@ -1,0 +1,13 @@
+{
+  "name": "kue-vue",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node dashboard"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "kue": "^0.11.6",
+    "serve-static": "^1.13.2"
+  }
+}
