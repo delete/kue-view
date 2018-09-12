@@ -32,8 +32,7 @@
         :priority="job.priority"
         :workerId="job.workerId"
         :data="job.data"
-        class="mb-4 cursor-pointer select-none"
-        :class="isJobSelected(job.id) ? 'shadow-md' : ''"
+        :isSelected="isJobSelected(job.id)"
         @click="selectJob(index)"
       />
     </div>
