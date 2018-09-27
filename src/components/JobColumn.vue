@@ -18,7 +18,10 @@
       </TheButton>
     </Menu>
     
-    <h2 class="text-3xl text-grey capitalize m-6">{{ title }}</h2>
+    <div class="flex items-center">
+      <h2 class="text-3xl text-grey capitalize m-6">{{ title }}</h2>
+      <Badge>{{ badge }}</Badge>
+    </div>
     <div class="jobs overflow-y-auto pr-2">
       <JobCard
         v-for="(job, index) in jobs" :key="job.id"
@@ -44,17 +47,22 @@ import { Component, Vue, Emit, Prop } from 'vue-property-decorator';
 import JobCard from '../components/JobCard.vue';
 import Menu from '../components/Menu.vue';
 import TheButton from '../components/TheButton.vue';
+import Badge from '../components/Badge.vue';
 
 @Component({
   components: {
     JobCard,
     Menu,
     TheButton,
+    Badge,
   },
 })
 export default class JobColumn extends Vue {
   @Prop({ required: true })
   public title!: string;
+
+  @Prop({ required: true })
+  public badge!: number;
 
   @Prop({ required: true })
   public jobs!: any[];
