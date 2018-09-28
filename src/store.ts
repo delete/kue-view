@@ -16,10 +16,13 @@ export default new Vuex.Store({
     SET_JOBS(state, payload) {
       state.jobs = payload;
     },
+    SET_STATS(state, payload) {
+      state.stats = payload;
+    },
   },
   actions: {
     async FETCH_JOBS({ commit }) {
-      const { data } = await kueApiService.getAll(0, 50, 'asc');
+      const { data } = await kueApiService.getAll(0, 100, 'asc');
       commit('SET_JOBS', data);
     },
     RESTART_JOB({}, { id, state }) {
@@ -29,8 +32,8 @@ export default new Vuex.Store({
       return kueApiService.deleteJob(id);
     },
     async FETCH_STATS({ commit }) {
-      const stats = await kueApiService.stats();
-      commit('SET_STATS', stats);
+      const { data } = await kueApiService.stats();
+      commit('SET_STATS', data);
     },
   },
   getters: {
