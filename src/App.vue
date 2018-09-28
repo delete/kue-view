@@ -3,7 +3,20 @@
     <router-view/>
   </div>
 </template>
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import { Action } from 'vuex-class';
 
+@Component
+export default class App extends Vue {
+  @Action('FETCH_STATS')
+  private fetchStats!: () => {};
+
+  public created() {
+    setInterval(() => this.fetchStats(), 1000);
+  }
+}
+</script>
 <style>
 @import "tailwindcss/preflight";
 @import "tailwindcss/components";

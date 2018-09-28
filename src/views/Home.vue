@@ -4,24 +4,28 @@
       <JobColumn
         class="board__column"
         title="queued"
+        :badge="stats.inactiveCount"
         :jobs="queuedJobs"
         @restart="restartJobs"
         @delete="deleteJobs"/>
       <JobColumn
         class="board__column"
         title="active"
+        :badge="stats.activeCount"
         :jobs="activedJobs"
         @restart="restartJobs"
         @delete="deleteJobs"/>
       <JobColumn
         class="board__column"
         title="complete"
+        :badge="stats.completeCount"
         :jobs="completedJobs"
         @restart="restartJobs"
         @delete="deleteJobs"/>
       <JobColumn
         class="board__column"
         title="failed"
+        :badge="stats.failedCount"
         :jobs="failedJobs"
         @restart="restartJobs"
         @delete="deleteJobs"/>
@@ -37,7 +41,8 @@ import {
   Action,
 } from 'vuex-class';
 
-import JobColumn from '../components/JobColumn.vue';
+import JobColumn from '@/components/JobColumn.vue';
+import { JobStats } from '@/JobModel';
 
 @Component({
   components: {
@@ -57,6 +62,9 @@ export default class Home extends Vue {
 
   @Getter('GET_QUEUED')
   private queuedJobs!: any[];
+
+  @State('stats')
+  private stats!: JobStats;
 
   @Action('FETCH_JOBS')
   private fetchJobs!: () => {};
