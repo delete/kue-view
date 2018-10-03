@@ -9,15 +9,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Emit } from 'vue-property-decorator';
+import { Component, Vue, Emit, Prop } from 'vue-property-decorator';
 
-@Component({
-  components: {},
-  props: {
-    showMenu: Boolean,
-  },
-})
-export default class Menu extends Vue {}
+@Component
+export default class Menu extends Vue {
+
+  @Prop()
+  public showMenu!: boolean;
+}
 </script>
 
 <style>
