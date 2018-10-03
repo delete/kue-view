@@ -61,7 +61,7 @@ export default class JobColumn extends Vue {
   @Prop({ required: true })
   public title!: string;
 
-  @Prop({ required: true })
+  @Prop({ required: true, default: 0 })
   public badge!: number;
 
   @Prop({ required: true })
