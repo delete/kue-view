@@ -42,7 +42,7 @@
   </section>
 </template>
 <script lang="ts">
-import { Component, Vue, Emit, Prop } from 'vue-property-decorator';
+import { Component, Vue, Emit, Prop, Watch } from 'vue-property-decorator';
 
 import JobCard from '../components/JobCard.vue';
 import Menu from '../components/Menu.vue';
@@ -107,6 +107,15 @@ export default class JobColumn extends Vue {
 
   get showMenu() {
     return this.selectedJobs.length > 0;
+  }
+
+  @Watch('jobs')
+  private cleanSelectedJobsWhenListChanges(newVal: string, oldVal: string) {
+    if (newVal !== oldVal) {
+      const ids = this.jobs.map((j) => j.id);
+
+      this.selectedJobs = this.selectedJobs.filter((j) => ids.indexOf(j.id) !== -1);
+    }
   }
 }
 </script>
