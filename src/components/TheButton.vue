@@ -19,8 +19,8 @@ export default class TheButton extends Vue {
   public secondary!: boolean;
 
   private types: any = {
-    primary: 'bg-black hover:bg-grey-darkest hover:border-grey-darkest text-white border-black',
-    secondary: 'text-grey-dark border-grey hover:bg-grey-darkest hover:border-grey-darkest hover:text-white',
+    primary: 'bg-indigo hover:bg-indigo-light hover:border-indigo-light text-white border-indigo',
+    secondary: 'text-grey-dark border-grey hover:bg-indigo hover:border-indigo hover:text-white',
     default: 'text-grey-dark border-grey',
   };
 

@@ -7,7 +7,7 @@
       <TheButton
         @click="handleRestartClick(selectedJobs)"
         title="Delete selected job(s)"
-        class="hover:text-blue hover:border-blue">
+        class="hover:text-indigo hover:border-indigo">
           Restart
       </TheButton>
       <TheButton
