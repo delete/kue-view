@@ -23,6 +23,7 @@
       <Badge>{{ badge }}</Badge>
     </div>
     <div class="jobs overflow-y-auto pr-2">
+      <div v-if="jobs.length === 0" class="text-grey text-lg">No tasks here</div>
       <JobCard
         v-for="(job, index) in jobs" :key="job.id"
         :jobId="job.id"
