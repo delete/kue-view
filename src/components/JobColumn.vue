@@ -110,7 +110,7 @@ export default class JobColumn extends Vue {
   }
 
   @Watch('jobs')
-  private cleanSelectedJobsWhenListChanges(newVal: string, oldVal: string) {
+  private updateSelectedJobsWhenJobListChange(newVal: string, oldVal: string) {
     if (newVal !== oldVal) {
       const ids = this.jobs.map((j) => j.id);
 
