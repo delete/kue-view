@@ -1,4 +1,7 @@
-# Kue-Vue UI
+# Kue Vue
+
+![Main screen](/screenshots/main.png)
+
 
 ## Project setup
 ```
