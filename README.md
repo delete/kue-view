@@ -1,4 +1,4 @@
-# Kue Vue
+# Kue View
 
 ![Main screen](/screenshots/main.png)
 

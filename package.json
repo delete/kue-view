@@ -1,12 +1,12 @@
 {
-  "name": "kue-vue",
+  "name": "kue-view",
   "version": "1.2.2",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "docker:image": "docker build -t kue-vue:1.0.0 ."
+    "docker:image": "docker build -t kue-view:1.0.0 ."
   },
   "dependencies": {
     "axios": "^0.18.0",
