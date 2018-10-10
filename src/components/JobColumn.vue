@@ -28,9 +28,9 @@
         v-for="(job, index) in jobs" :key="job.id"
         :jobId="job.id"
         :jobType="job.type"
-        :createdAt="job.created_at"
-        :updatedAt="job.updated_at"
-        :startedAt="job.started_at"
+        :createdAt="format(job.created_at, 'DD/MM/YYYY HH:mm:ss')"
+        :updatedAt="format(job.updated_at, 'DD/MM/YYYY HH:mm:ss')"
+        :startedAt="format(job.started_at, 'DD/MM/YYYY HH:mm:ss')"
         :duration="job.duration"
         :attempts="job.attempts"
         :priority="job.priority"
@@ -49,6 +49,7 @@ import JobCard from '../components/JobCard.vue';
 import Menu from '../components/Menu.vue';
 import TheButton from '../components/TheButton.vue';
 import Badge from '../components/Badge.vue';
+import { format } from 'date-fns';
 
 @Component({
   components: {
