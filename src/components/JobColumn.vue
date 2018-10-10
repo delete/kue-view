@@ -28,9 +28,9 @@
         v-for="(job, index) in jobs" :key="job.id"
         :jobId="job.id"
         :jobType="job.type"
-        :createdAt="format(job.created_at, 'DD/MM/YYYY HH:mm:ss')"
-        :updatedAt="format(job.updated_at, 'DD/MM/YYYY HH:mm:ss')"
-        :startedAt="format(job.started_at, 'DD/MM/YYYY HH:mm:ss')"
+        :createdAt="formatDate(job.created_at)"
+        :updatedAt="formatDate(job.updated_at)"
+        :startedAt="formatDate(job.started_at)"
         :duration="job.duration"
         :attempts="job.attempts"
         :priority="job.priority"
@@ -88,6 +88,11 @@ export default class JobColumn extends Vue {
 
   public toggleSelectAll() {
     this.isAllSelected = !this.isAllSelected;
+  }
+
+  public formatDate(dateString: string): string {
+    var date = new Date(Number(dateString));
+    return format(date, 'DD/MM/YYYY HH:mm:ss ');
   }
 
   @Emit('restart')
