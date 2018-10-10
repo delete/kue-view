@@ -12,7 +12,7 @@ I started this project to be an alternative UI to [Kue library](https://github.c
 
 You will need to setup an Redis server. The easier way is run into a Docker container.
 
-The image can be find [here](https://hub.docker.com/_/redis/)
+The image can be found [here](https://hub.docker.com/_/redis/)
 
 
 There is a sample project in the **examples** folder. After setup the Redis server, you should edit the `dashboard.js` with the IP and PORT OR use the env variables:
