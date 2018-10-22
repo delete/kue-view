@@ -7,13 +7,15 @@
       <TheButton
         @click="handleRestartClick(selectedJobs)"
         title="Delete selected job(s)"
-        class="hover:text-indigo hover:border-indigo">
+        class="hover:text-indigo hover:border-indigo"
+      >
           Restart
       </TheButton>
       <TheButton
         @click="handleDeleteClick(selectedJobs)"
         title="Restart selected job(s)"
-        class="hover:text-red hover:border-red">
+        class="hover:text-red hover:border-red"
+      >
           Delete
       </TheButton>
     </Menu>
@@ -40,6 +42,8 @@
         @click="selectJob(index)"
       />
     </div>
+
+    <SideBar :open="showMenu" :job="jobs.find(j => j.id === 2)"></SideBar>
   </section>
 </template>
 <script lang="ts">
@@ -47,6 +51,7 @@ import { Component, Vue, Emit, Prop, Watch } from 'vue-property-decorator';
 
 import JobCard from '../components/JobCard.vue';
 import Menu from '../components/Menu.vue';
+import SideBar from '../components/SideBar.vue';
 import TheButton from '../components/TheButton.vue';
 import Badge from '../components/Badge.vue';
 import { format } from 'date-fns';
@@ -57,6 +62,7 @@ import { format } from 'date-fns';
     Menu,
     TheButton,
     Badge,
+    SideBar,
   },
 })
 export default class JobColumn extends Vue {
@@ -91,7 +97,7 @@ export default class JobColumn extends Vue {
   }
 
   public formatDate(dateString: string): string {
-    var date = new Date(Number(dateString));
+    const date = new Date(Number(dateString));
     return format(date, 'DD/MM/YYYY HH:mm:ss ');
   }
 
