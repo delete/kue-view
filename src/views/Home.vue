@@ -1,36 +1,38 @@
 <template>
-  <div class="home">
-    <div class="board flex">
-      <JobColumn
-        class="board__column"
-        title="queued"
-        :badge="stats.inactiveCount"
-        :jobs="queuedJobs"
-        @restart="restartJobs"
-        @delete="deleteJobs"/>
-      <JobColumn
-        class="board__column"
-        title="active"
-        :badge="stats.activeCount"
-        :jobs="activedJobs"
-        @restart="restartJobs"
-        @delete="deleteJobs"/>
-      <JobColumn
-        class="board__column"
-        title="complete"
-        :badge="stats.completeCount"
-        :jobs="completedJobs"
-        @restart="restartJobs"
-        @delete="deleteJobs"/>
-      <JobColumn
-        class="board__column"
-        title="failed"
-        :badge="stats.failedCount"
-        :jobs="failedJobs"
-        @restart="restartJobs"
-        @delete="deleteJobs"/>
+  <SimpleScrollBottom @bottom="loadMoreJobs">
+    <div class="home">
+      <div class="board flex">
+        <JobColumn
+          class="board__column"
+          title="queued"
+          :badge="stats.inactiveCount"
+          :jobs="queuedJobs"
+          @restart="restartJobs"
+          @delete="deleteJobs"/>
+        <JobColumn
+          class="board__column"
+          title="active"
+          :badge="stats.activeCount"
+          :jobs="activedJobs"
+          @restart="restartJobs"
+          @delete="deleteJobs"/>
+        <JobColumn
+          class="board__column"
+          title="complete"
+          :badge="stats.completeCount"
+          :jobs="completedJobs"
+          @restart="restartJobs"
+          @delete="deleteJobs"/>
+        <JobColumn
+          class="board__column"
+          title="failed"
+          :badge="stats.failedCount"
+          :jobs="failedJobs"
+          @restart="restartJobs"
+          @delete="deleteJobs"/>
+      </div>
     </div>
-  </div>
+  </SimpleScrollBottom>
 </template>
 
 <script lang="ts">
@@ -42,11 +44,13 @@ import {
 } from 'vuex-class';
 
 import JobColumn from '@/components/JobColumn.vue';
+import SimpleScrollBottom from '@/components/SimpleScrollBottom.vue';
 import { JobStats } from '@/JobModel';
 
 @Component({
   components: {
     JobColumn,
+    SimpleScrollBottom,
   },
 })
 export default class Home extends Vue {
@@ -67,7 +71,7 @@ export default class Home extends Vue {
   private stats!: JobStats;
 
   @Action('FETCH_JOBS')
-  private fetchJobs!: () => {};
+  private fetchJobs!: ({ min, max }: any) => {};
 
   @Action('RESTART_JOB')
   private restartJob!: ({ id, state }: any) => {};
@@ -75,8 +79,12 @@ export default class Home extends Vue {
   @Action('DELETE_JOB')
   private deleteJob!: ({ id }: any) => {};
 
+  private min: number = 0;
+  private max: number = 100;
+  private fetchInterval: any;
+
   public created() {
-    setInterval(() => this.fetchJobs(), 1000);
+    this.startFetchJobs();
   }
 
   public restartJobs(jobs: any[]) {
@@ -85,6 +93,17 @@ export default class Home extends Vue {
 
   public deleteJobs(jobs: any[]) {
     jobs.forEach((j) => this.deleteJob({ id: j.id }));
+  }
+
+  private startFetchJobs() {
+    this.fetchInterval = setInterval(() => this.fetchJobs({min: this.min, max: this.max}), 1000);
+  }
+
+  private loadMoreJobs() {
+    clearInterval(this.fetchInterval);
+    this.max += 50;
+
+    this.startFetchJobs();
   }
 }
 </script>

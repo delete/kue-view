@@ -21,8 +21,8 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    async FETCH_JOBS({ commit }) {
-      const { data } = await kueApiService.getAll(0, 100, 'asc');
+    async FETCH_JOBS({ commit }: any, {min, max}) {
+      const { data } = await kueApiService.getAll(min, max, 'asc');
       commit('SET_JOBS', data);
     },
     RESTART_JOB({}, { id, state }) {

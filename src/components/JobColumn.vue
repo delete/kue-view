@@ -91,7 +91,7 @@ export default class JobColumn extends Vue {
   }
 
   public formatDate(dateString: string): string {
-    var date = new Date(Number(dateString));
+    const date = new Date(Number(dateString));
     return format(date, 'DD/MM/YYYY HH:mm:ss ');
   }
 
